@@ -23,8 +23,8 @@
 
 <body>
     <div class="centerContainer">
-    <a type="button" class="sairBtn" href="../../"">Sair</a>   
-    <label>Usuários</label>
+        <a type="button" class="sairBtn" href="../../"">Sair</a>   
+        <label>Usuários</label>
         <table>
             <thead>
                 <tr>
@@ -34,6 +34,7 @@
                     <th>Idade</th>
                     <th>Email</th>
                     <th>Senha</th>
+                    <th>Opções</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,17 +52,29 @@
                      <td>" . $usuarios[$i][3] . "</td>
                     <td>" . $usuarios[$i][4] . "</td>
                      <td>" . $usuarios[$i][5] . "</td>
-                     </tr>";
+                     ";
+
+                    echo "<td>
+                         <div>
+                            <form method='post' action='../crud/delete.php'>
+                                <input value='" . $usuarios[$i][0] . "' name='id' type='hidden'/>
+                                 <button type='submit' class='tableBtn'>Excluir</button></form>
+                            <form method='post' action='../pages/editar.php'>
+                                <input value='" . $usuarios[$i][0] . "' name='id' type='hidden'/>
+                                <button type='submit' class='tableBtn'>Editar</button></td></form>
+                         </div>
+                         </td>
+                         </tr>";
                 }
                 ?>
             </tbody>
         </table>
-        <div class="searchContainer">
+        <div class=" searchContainer">
             <form method="get" action="">
-            <div class="searchContainer">   
-            <input type="text" name="busca" value="" placeholder="Pesquisar" />
-                <button type="submit" class="tableBtn">🔎</button>
-                </div>
+                <div class="searchContainer">
+                    <input type="text" name="busca" value="" placeholder="Pesquisar" />
+                    <button type="submit" class="tableBtn">🔎</button>
+                    </div>
             </form>
 
             <?php
@@ -105,14 +118,13 @@
                      </tr>
                      </thead>
             <tbody>";
-                    // print_r($value);
                 }
             }
 
             ?>
 
 
-        </div>
+    </div>
     </div>
 </body>
 

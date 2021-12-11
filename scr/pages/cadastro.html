@@ -6,26 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <link rel="stylesheet" href="../css/design.css">
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-image: url(https://images.wallpaperscraft.com/image/single/astronauts_astronaut_spacesuit_174777_1920x1080.jpg);
+            background-repeat: no-repeat;
+
+        }
+    </style>
 </head>
 
 <body>
-    <div class="formContainer">
-        <form method="POST" action="../crud/create.php">
-            <label>Nome</label>
-            <input type="text" name="nome" id="nome" value="" />
-            <label>Sobrenome</label>
-            <input type="text" name="sobrenome" id="sobrenome" value="" />
-            <label>Email</label>
-            <input type="text" name="email" id="email" value="" />
-            <label>Idade</label>
-            <input type="text" name="idade" id="idade" value="" />
-            <label>Senha</label>
-            <input type="text" name="senha" id="senha" value="" />
-            <button type="submit" class="btn" name="btn-cadastro">
-                Cadastrar
-            </button>
-            <a href="../../index.html">Cancelar</a>
-        </form>
+    <div class="container">
+        <div class="shadow">
+
+            <div class="content">
+                <label for="idEmailInput">Cadastro</label>
+                <form method="post" action="../crud/create.php" class="form">
+
+                    <input type="text" name="nome" id="nome" value="" placeholder="Nome: " />
+
+                    <input type="text" name="sobrenome" id="sobrenome" value="" placeholder="Sobrenome " />
+                    <input type="number" name="idade" id="idade" value="" placeholder="Idade" />
+
+                    <input type="email" name="email" id="email" value="" placeholder="Email:" />
+
+
+
+                    <input type="password" name="senha" id="senha" value="" placeholder="Senha" />
+                    <div style="flex-direction: row; justify-content: space-evenly;">
+                        <label for="admInput" class="text">Administrador?</label>
+                        <input type="radio" id="admInput" name="adm" value="1" />
+                    </div>
+
+                    <button type="submit" name="cadastro" value="cadastro">
+                        Cadastrar
+                    </button>
+                </form>
+
+                <div class="signUpContainer">
+                    <a href="../../index.html">Voltar</a>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 </body>
 

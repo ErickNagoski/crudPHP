@@ -1,21 +1,27 @@
-<?
-require_once '../connection/conexaoBD.php';
+<?php
+include("../connection/conexao.php");
+$nome = $_POST["nome"];
+$sobrenome = $_POST["sobrenome"];
+$idade = $_POST["idade"];
+$email = $_POST["email"];
+$senha = $_POST["senha"];
+$adm = isset($_POST['adm'])?$_POST['adm']:0;
 
-if (isset($_POST['btn-cadastro'])) :
-    $nome = mysqli_escape_string($connect, $_POST['nome']);
-    $sobrenome = mysqli_escape_string($connect, $_POST['sobrenome']);
-    $email = mysqli_escape_string($connect, $_POST['email']);
-    $senha = mysqli_escape_string($connect, $_POST['senha']);
-    $idade = mysqli_escape_string($connect, $_POST['idade']);
+echo "Salvando: " . $nome . ", " . $sobrenome . ", " . $idade . ", " . $senha . ", " . $email . "<br />";
 
-    $sql = "INSERT INTO usuarios (nome, sobrenome, email, senha, idade) VALUES ('$nome', '$sobrenome', '$email', '$senha', '$idade' )";
+$sql = "INSERT INTO usuarios (nome,sobrenome,email, senha, idade, adm) VALUES ";
+$sql = $sql . "('$nome','$sobrenome','$email','$senha','$idade', '$adm');";
 
+echo "Instrução: " . $sql . "<br>";
 
-    if (mysqli_query($connect, $sql)) {
-        // header('Location: ../pages/home.php');
-        echo "ok";
-    } else {
-        echo "error";
-        // header("Location: ../index.php?error");
-    }
-endif;
+$resultado = mysqli_query($conexao, $sql);
+
+echo ("Resultado= " . $resultado . "<br>");
+
+if ($resultado == 1) {
+    header("Location: ../pages/successPage.html");
+} else {
+    echo "Não foi possível inserir!" . "<br>";
+}
+mysqli_close($conexao);
+
